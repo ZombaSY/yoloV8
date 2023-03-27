@@ -166,7 +166,6 @@ class BasePredictor:
                 im = self.preprocess(im)
                 if len(im.shape) == 3:
                     im = im[None]  # expand for batch dim
-
             # inference
             with self.dt[1]:
                 preds = self.model(im, augment=self.args.augment, visualize=visualize)
