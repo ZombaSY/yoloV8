@@ -2,6 +2,7 @@ import os
 import tensorflow as tf
 import onnx
 from onnx_tf.backend import prepare
+from ultralytics.yolo.engine.model import YOLO
 
 os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 weights = "pretrained/hair_det_512_yolov8m.onnx"
@@ -40,6 +41,8 @@ def pb2tflite(weights):
         f_w.write(tflite_quant_model)
 
 
+model = YOLO(weights)  # load a pretrained model (recommended for training)
+model.export(format="onnx", imgsz=512)  # export the model to ONNX format
 onnx_model = onnx.load(weights)
 onnx2pb(weights)
 pb2tflite(weights)

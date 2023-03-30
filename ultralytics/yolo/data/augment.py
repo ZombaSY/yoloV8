@@ -558,12 +558,12 @@ class Albumentations:
             check_version(A.__version__, '1.0.3', hard=True)  # version requirement
 
             T = [
-                A.Blur(p=0.01),
-                A.MedianBlur(p=0.01),
-                A.ToGray(p=0.01),
-                A.CLAHE(p=0.01),
-                A.RandomBrightnessContrast(p=0.0),
-                A.RandomGamma(p=0.0),
+                A.Blur(p=0.1),
+                A.MedianBlur(p=0.1),
+                A.ToGray(p=0.2),
+                A.CLAHE(p=0.1),
+                A.RandomBrightnessContrast(p=0.1),
+                A.RandomGamma(p=0.1),
                 A.ImageCompression(quality_lower=75, p=0.0)]  # transforms
             self.transform = A.Compose(T, bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
 
