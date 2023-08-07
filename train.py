@@ -4,7 +4,7 @@ import sys
 
 sys.path.append(os.getcwd())
 
-os.environ["CUDA_VISIBLE_DEVICES"] = '2'
+os.environ["CUDA_VISIBLE_DEVICES"] = '3'
 
 # Load a model
 weights = 'pretrained/yolov8m.pt'
