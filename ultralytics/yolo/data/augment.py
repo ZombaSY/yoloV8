@@ -558,10 +558,10 @@ class Albumentations:
             check_version(A.__version__, '1.0.3', hard=True)  # version requirement
 
             T = [
-                A.Blur(p=0.5),
+                A.Blur(p=0.3),
                 A.MedianBlur(p=0.1),
-                A.ToGray(p=0.05),
-                A.CLAHE(p=0.1),
+                A.ToGray(p=0.01),
+                A.CLAHE(p=0.01),
                 A.RandomBrightnessContrast(p=0.1),
                 A.RandomGamma(p=0.1),
                 A.ImageCompression(quality_lower=80, p=0.3)]  # transforms
