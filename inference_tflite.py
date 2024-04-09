@@ -28,7 +28,6 @@ def write_results(img, obj_boxes, fn, dst=None):
     cv2.imwrite(os.path.join(dst, fn), img.astype(np.uint8))
 
 
-
 def xywh2xyxy(x):
     # Convert nx4 boxes from [x, y, w, h] to [x1, y1, x2, y2] where xy1=top-left, xy2=bottom-right
     y = copy.deepcopy(x)
@@ -75,12 +74,6 @@ def tflite_output_to_bbox_v8(img, pred, crop_size, score_th):
         x2 = cx + crop_size_half if cx + crop_size_half < img_width else img_width - 1
         y1 = cy - crop_size_half if cy - crop_size_half >= 0 else 0
         y2 = cy + crop_size_half if cy + crop_size_half < img_height else img_height - 1
-
-        # skip object in image boundary
-        # if cx - crop_size_half < 0 or cy - crop_size_half < 0 or cx + crop_size_half > img_width or cy + crop_size_half > img_height:
-        #     continue
-        # if not (y2 - y1 == crop_size and x2 - x1 == crop_size):
-        #     continue
 
         img_crop = img[y1:y2, x1:x2]
         mask_list.append(i)
