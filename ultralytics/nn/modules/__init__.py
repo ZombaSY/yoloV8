@@ -46,6 +46,7 @@ from .block import (
     RepNCSPELAN4,
     ResNetLayer,
     Silence,
+    Ensemble
 )
 from .conv import (
     CBAM,

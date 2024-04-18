@@ -37,6 +37,7 @@ __all__ = (
     "CBFuse",
     "CBLinear",
     "Silence",
+    "Ensemble"
 )
 
 
@@ -684,3 +685,16 @@ class CBFuse(nn.Module):
         res = [F.interpolate(x[self.idx[i]], size=target_size, mode="nearest") for i, x in enumerate(xs[:-1])]
         out = torch.sum(torch.stack(res + xs[-1:]), dim=0)
         return out
+
+
+class Ensemble(nn.ModuleList):
+    # Ensemble of models
+    def __init__(self):
+        super().__init__()
+
+    def forward(self, x, augment=False, profile=False, visualize=False):
+        y = [module(x, augment, profile, visualize)[0] for module in self]
+        # y = torch.stack(y).max(0)[0]  # max ensemble
+        # y = torch.stack(y).mean(0)  # mean ensemble
+        y = torch.cat(y, 1)  # nms ensemble
+        return y, None  # inference, train output

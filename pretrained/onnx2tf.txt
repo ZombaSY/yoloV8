@@ -1,0 +1,5 @@
+onnx2tf -i best.onnx -ois images:1,96,96,3 -kt KEEP_NWC_OR_NHWC_OR_NDHWC_INPUT_NAMES "images"
+
+onnx2tf -i best.onnx -ois input:1,3,96,96 -osd -cotof  -k KEEP_NCW_OR_NCHW_OR_NCDHW_INPUT_NAMES
+
+-prf param_replacement.json
