@@ -7,11 +7,11 @@ import sys
 
 
 DATA_PATH = '/lulu_data/data/ssy/lululab/faceIQC/FaceDetection/LuluFaceDB_20230713_eyebrow/test'
-MODEL_PATH = 'pretrained/best-float32-NCHW.tflite'
-IMG_SIZE = 128
+MODEL_PATH = 'pretrained/33.tflite'
+IMG_SIZE = 96
 
 sys.path.append(os.getcwd())
-os.environ["CUDA_VISIBLE_DEVICES"] = '2'
+os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 
 
 def write_results(img, obj_boxes, fn, dst=None):
